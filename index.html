@@ -1,28 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>WeatherSnap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <section>
 
-        </section>
-    </header>
-    <main>
-        <section>
-            
-        </section>
-    </main>
-    <footer>
-        <section>
-            
-        </section>
-    </footer>
+<body class="bg-[#87BFFF] min-h-screen flex items-center justify-center p-4 text-white">
+    <div class="w-full max-w-[450px] flex flex-col gap-6">
 
+        <!-- Título do App -->
+        <h1 class="text-3xl font-semibold text-center drop-shadow-md">WeatherSnap ☀️</h1>
+
+        <!-- Navegação Superior -->
+        <nav class="flex justify-between items-center">
+            <button class="bg-white/40 backdrop-blur-md border border-white/40 px-4 py-2 rounded-xl flex items-center gap-2 text-sm transition hover:bg-white/50">🏠 Início</button>
+            <button class="px-4 py-2 rounded-xl flex items-center gap-2 text-sm transition hover:bg-white/30">📊 Comparar <span class="bg-white text-[#87BFFF] text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">3</span></button>
+        </nav>
+
+        <!-- Barra de Busca -->
+        <div class="relative">
+            <div class="flex bg-white/20 backdrop-blur-lg border border-white/40 rounded-2xl overflow-hidden focus-within:ring-2 focus-within:ring-white/50 transition-all">
+                <span class="pl-4 flex items-center text-white/70">🔍</span>
+                <input type="text" id="city-input" placeholder="Buscar cidade..." class="bg-transparent w-full p-3 outline-none placeholder:text-white/70 text-white">
+                <button id="search-btn" class="bg-white/30 px-6 py-2 hover:bg-white/40 transition">Buscar</button>
+            </div>
+        </div>
+
+        <!-- Card Principal -->
+        <main class="bg-white/20 backdrop-blur-2xl border border-white/40 rounded-[45px] p-8 shadow-2xl">
+            
+            <!-- Cabeçalho do Card (Localização e Ações) -->
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <h2 id="city-display" class="text-2xl font-semibold">Carregando...</h2>
+                    <p id="date-display" class="text-sm text-white/80">--</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition text-lg">📊</button>
+                    <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition text-lg">🔗</button>
+                </div>
+            </div>
+
+            <!-- Clima Atual -->
+            <div class="flex flex-col items-center mb-6">
+                <span id="main-icon" class="text-7xl mb-4">☀️</span>
+                <div class="flex items-start">
+                    <span id="temp-display" class="text-8xl font-semibold leading-none">--</span>
+                    <span class="text-4xl mt-2 font-light">ºC</span>
+                </div>
+            </div>
+
+            <!-- Descrição e Detalhes -->
+            <div class="text-center mb-8">
+                <h3 id="condition-display" class="text-xl font-medium mb-2">--</h3>
+                <div class="flex justify-center gap-6 text-sm text-white/90">
+                    <span class="flex items-center gap-1">💨 <span id="wind-display">-- km/h</span></span>
+                    <span class="flex items-center gap-1">💧 <span id="humidity-display">--%</span></span>
+                </div>
+            </div>
+
+            <!-- Caixa de Sugestão Inteligente -->
+            <div class="bg-white/15 rounded-2xl p-4 mb-8 text-center text-sm leading-relaxed border border-white/10">
+                <p id="suggestion-display">Digite uma cidade para começar!</p>
+            </div>
+
+            <!-- Seção de Previsão -->
+            <div class="space-y-4">
+                <h4 class="text-sm font-semibold text-white/80 uppercase tracking-wider">Próximos dias</h4>
+                <div id="forecast-container" class="grid grid-cols-3 gap-3">
+                    <!-- Os cards de previsão serão gerados aqui pelo JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <style>
+        body { font-family: 'Outfit', sans-serif; transition: background-color 0.5s ease; }
+    </style>
     <script src="script.js"></script>
 </body>
 </html>
